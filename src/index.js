@@ -1,0 +1,5 @@
+export {default as App} from './App.jsx'
+export {default as Navbar} from './views/Navbar.jsx'
+export {default as DownloaderForm} from './components/Downloader-form/DownloaderForm.jsx'
+export {default as InputForm} from './components/Input-form/InputForm.jsx'
+export {default as VideoDown} from './components/video-download-page/VideoDown.jsx'
