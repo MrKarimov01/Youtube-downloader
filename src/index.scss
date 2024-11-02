@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 @import './varebls';
+@import './responsive';
 
 * {
   padding: 0;
@@ -29,6 +30,10 @@ body {
   padding: 1.25rem 3rem 0;
 
   nav {
+    
+    .mobile_nav_btn{
+      display: none;
+    }
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -38,6 +43,7 @@ body {
       display: flex;
       align-items: center;
       gap: 0.625rem;
+      cursor: pointer;
 
       svg {
         width: 2.5rem;
@@ -49,23 +55,54 @@ body {
         font-weight: 700;
       }
     }
-
+    
     ul {
       display: flex;
       gap: 1.25rem;
 
-      li {
-        cursor: pointer;
-        transition: all 0.2s ease-in-out;
+    
+    }
+  }
+  .youtube{
+    li {
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
 
-        &:hover {
-          color: $purple;
-        }
-      }
-
-      .active {
+      &:hover {
         color: $purple;
       }
+    }
+
+    .active {
+      color: $purple;
+    }
+  }
+  .tiktok{
+    li {
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+
+      &:hover {
+        color: $green;
+      }
+    }
+
+    .active {
+      color: $green;
+    }
+  }
+  .instagram{
+    li {
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+
+      &:hover {
+        color: $pink;
+      }
+    }
+
+    .active {
+      color: $pink;
     }
   }
 
@@ -403,95 +440,118 @@ body {
       }
 
     }
-    .VideoDown{
-      width: min(100%,60%);
+    .VideoDown {
+      width: min(100%, 60%);
       height: 0;
-      overflow: hidden;
-   
+      gap: 20px;
       display: flex;
       align-items: center;
+      flex-direction: row;
+      transition: all 0.5s;
+  
+      .video-info {
+          text-align: center;
+          margin-bottom: 20px;
+          
+          .video-title {
+              font-size: 1.5rem;
+              font-weight: bold;
+              margin: 0;
+          }
+          
+          .video-author, .video-duration {
+              font-size: 1rem;
+              color: #555;
+          }
+      }
+  
+      .wrapper {
+          display: flex;
+          justify-content: flex-start;
+          flex-direction: column;
+      }
+      .video{
+        display: flex;
+        flex-direction:  column;
+        justify-content: flex-start;
+        align-items: flex-start;
+
+        img {
+            
+            height: auto;
+            object-fit: cover;
+            width: 80%;
+            box-shadow: rgba(0, 0, 0, 0.5) 0px 4px 10px;
+            margin-inline: auto;
+            border-radius: 0.5rem;
+            cursor: pointer;
+        }
+        .video-info{
+          text-align: left;
+        }
+      }
       
-      flex-direction: column;
-      transition: all .5s;
-
-      img{
-        
-        margin-top: 20px;
-        width: 50%;
-        
-        box-shadow: rgba(0, 0, 0, 0.5) 0px 4px 10px;
-        margin-inline: auto;
-        border-radius: .5rem;
-      }
-      .download-btns{
-        display: flex;
-        margin-top: 20px;
-        gap: 20px;
-        button{
-          cursor: pointer;
-          border: none;
-          outline: none;
-          &:first-child{
-             
-              $height: 44px;
-              $accentColor: $purple;
-              border-radius: .5rem;
-              padding: 0 24px;
+      .download-btns {
+          display: flex;
+          margin-top: 20px;
+          gap: 20px;
+          
+          button {
+              cursor: pointer;
+              border: none;
+              outline: none;
               
-              height: $height;
-              display: inline-block;
-              background-color: $accentColor;
-        
-              font-size: 20px;
-              font-weight: 500;
-              text-align: center;
-              text-decoration: none;
-              color: $accentColor;
-              overflow: hidden;
-              color: white;
+              &:first-child {
+                  height: 44px;
+                  border-radius: 0.5rem;
+                  padding: 0 24px;
+                  display: inline-block;
+                  background-color: #6A0DAD; /* Purple color */
+                  font-size: 20px;
+                  font-weight: 500;
+                  color: white;
+                  
+                  &:disabled {
+                      background-color: #cccccc;
+                      color: #666666;
+                      cursor: not-allowed;
+                      opacity: 0.6;
+                  }
+              }
               
-              &:disabled {
-                background-color: #cccccc; /* Light gray background */
-                color: #666666; /* Darker gray text */
-                cursor: not-allowed; /* Change cursor to indicate it's not clickable */
-                opacity: 0.6; /* Slightly transparent */
-            }
-            
-            
+              &:last-child {
+                  height: 44px;
+                  background-color: white;
+                  padding: 0 24px;
+                  border-radius: 0.5rem;
+                  font-size: 16px;
+                  box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 10px;
+              }
           }
-          &:last-child{
-            height: 44px;
-            background-color: white;
-            padding: 0 24px;
-            border-radius: .5rem;
-            font-size: 16px;
-            box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 10px;
+      }
+  
+      .custom-select {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          
+          select {
+              appearance: none;
+              width: auto;
+              font-size: 1.15rem;
+              padding: 0.675em 1em;
+              background-color: #fff;
+              border: 1px solid #caced1;
+              border-radius: 0.25rem;
+              color: #000;
+              cursor: pointer;
           }
-
-        }
-        
-        
       }
-      .custom-select{
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 20px;
-        select{
-          appearance: none;
-          width: 40%;
-          font-size: 1.15rem;
-          padding: 0.675em 1em 0.675em 1em;
-          background-color: #fff;
-          border: 1px solid #caced1;
-          border-radius: 0.25rem;
-          color: #000;
-          cursor: pointer;
-        }
-      }
-    }
+  }
+  
   }
   
 
 }
+
