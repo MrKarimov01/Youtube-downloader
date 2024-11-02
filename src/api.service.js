@@ -1,22 +1,24 @@
 import axios from "axios";
 
-let config = {
+const config = {
     method: 'post',
-    maxBodyLength: Infinity,
-    url : "https://Video-Downloader.proxy-production.allthingsdev.co/instagram/download?url=https://www.instagram.com/reel/CmfpggwK5cp/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+    url: 'https://social-download-all-in-one.p.rapidapi.com/v1/social/autolink', // URLni o'zgartirdik
     headers: { 
-       'x-apihub-key': 'wsyj2rcxP5PSBzQI849Vdt5yepSnoushyMABuRQwfCYzztF8uX', 
-       'x-apihub-host': 'Video-Downloader.allthingsdev.co', 
-       'x-apihub-endpoint': '61cd9229-ed75-4f09-84ed-5da30e4881be'
+        'x-rapidapi-key': '55cd9dca24msh3240afabb0e5cfdp16974cjsn05bd926bdee6', 
+        'x-rapidapi-host': 'social-download-all-in-one.p.rapidapi.com', 
+        'Content-Type': 'application/json'
     }
- };
- 
-
-
+};
 
 export const ApiService = {
-    async fetching(){
-        const response = await axios.get(config)
-        return response
+    async fetching(url) {
+        const data = JSON.stringify({ url }); // JSON formatida ma'lumot yaratish
+        try {
+            const response = await axios.post(config.url, data, { headers: config.headers });
+            return response.data; // Faqat data qismi qaytariladi
+        } catch (error) {
+            console.error("API chaqiruvida xato:", error);
+            throw error; // Xatoni qaytarish
+        }
     }
-}
+};
