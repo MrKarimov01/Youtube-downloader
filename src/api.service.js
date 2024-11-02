@@ -1,13 +1,12 @@
 import axios from "axios";
+const apiUrl = import.meta.env.VITE_API_URL;
+const appHeader = JSON.parse(import.meta.env.VITE_APP_HEADER);
+
 
 const config = {
     method: 'post',
-    url: 'https://social-download-all-in-one.p.rapidapi.com/v1/social/autolink', // URLni o'zgartirdik
-    headers: { 
-        'x-rapidapi-key': '55cd9dca24msh3240afabb0e5cfdp16974cjsn05bd926bdee6', 
-        'x-rapidapi-host': 'social-download-all-in-one.p.rapidapi.com', 
-        'Content-Type': 'application/json'
-    }
+    url: apiUrl, // URLni o'zgartirdik
+    headers: appHeader
 };
 
 export const ApiService = {
